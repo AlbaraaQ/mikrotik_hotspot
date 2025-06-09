@@ -1,0 +1,244 @@
+﻿<!doctype html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#8277d1">
+    <title data-network-name>شبكة{{network-name}} </title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <link rel="stylesheet" href="css/fontello.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/mhtrf.css">
+    <link rel="stylesheet" href="css/speed.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <script charset="UTF-8" src="js/sweetalert2.all.min.js"></script>
+</head>
+<body translate="no">
+    <div class="container">
+        <div class="error-container">
+            <div class="error">
+                <div class="fade-in">
+                    <p>حصل خطا!!
+                        <p id="error">
+                </div>
+            </div>
+        </div>
+        <div class="screen">
+            <div class="screen-content">
+                <div class="login" id="login" style="visibility: hidden">
+                    <div class="network-prefix">شبكة</div>
+                    <div class="network-name"><span data-network-name data-fit-text>{{network-name}} </span></div>
+                    <div class="date-field" data-show-date-field>
+                        <span hot-date></span>,الموافق <span hot-hijri-date hot-adjust-days="-1"></span>
+                    </div>
+                    <section class="section" style="top:140px;margin-top:5px;">
+                        <p class="marquee" data-news-line style="top:130px;margin-top:12px;">{{news-line}} </p>
+                    </section>
+
+                    <form class="login-form" name="login">
+                        <label class="speed-select">إختر سرعتك من هنا:
+                            <select id="speed" name="speed" class="select">
+                                <option value="55987b0d-ca6d-464f-93c8-db9ac4a08888">سرعة اقتصادية</option>
+                                <option value="55987b0d-ca6d-464f-93c8-db9ac4a08000" selected>سرعة متوسطة</option>
+                                <option value="55987b0d-ca6d-464f-93c8-db9ac4a08111">سرعة عالية</option>
+                                <option value="55987b0d-ca6d-464f-93c8-db9ac4a08222">سرعة قوية</option>
+                            </select>
+                        </label>
+                        <div class="login-field">
+                            <i class="login-icon fas icon-user"></i>
+                            <input name="username" class="login-input" placeholder="ادخل رمز البطاقة هنا" username-field improve-input autocomplete="off">
+                        </div>
+                        <div class="login-field password-field">
+                            <i class="login-icon fas icon-lock"></i>
+                            <input type="hidden" name="password" class="login-input" placeholder="ادخل كلمة السر هنا" improve-input>
+                        </div>
+                        <button class="button login-submit" parent-id="status" enable-hot-cookie>
+                            <span class="button-text">تسجيل الدخول</span>
+                            <i class="button-icon fas icon-left-open"></i>
+                        </button>
+                    </form>
+
+                    <button class="button app-submit sell-point-icon app-store" parent-id="loan" data-loan-button>جديد الخدمات</button>
+
+                    <div class="social-login">
+                        <button class="button app-submit price-icon" parent-id="price" data-price-button>الاسعار</button>
+                        <button class="button app-submit sell-point-icon" parent-id="sell-point" data-sell-point-button>نقاط البيع</button>
+                        <h5 class="contact" data-service-number>هاتف: {{service-number}}</h5>
+                    </div>
+                </div>
+
+                <div class="app" id="price">
+                    <div class="price-div">
+                        <div class="wrapper">
+                            <p class="title">الاسعار</p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">الفئة</th>
+                                        <th scope="col">الوقت</th>
+                                        <th scope="col">الرصيد</th>
+                                        <th scope="col">الصلاحية</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="profiles"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="social-login">
+                        <button class="app-logout button app-submit back">تسجيل الدخول</button>
+                        <h5 class="contact back" data-service-number>هاتف: {{service-number}}</h5>
+                    </div>
+                </div>
+
+                <div class="app" id="sell-point">
+                    <div class="sell-point-div">
+                        <div class="wrapper">
+                            <p class="title">نقاط البيع</p>
+                            <table>
+                                <tbody class="sell-point" id="sell-points"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="social-login">
+                        <button class="app-logout button app-submit back">تسجيل الدخول</button>
+                        <h5 class="contact back" data-service-number>هاتف: {{service-number}}</h5>
+                    </div>
+                </div>
+
+                <div class="app" id="status">
+                    <div class="status-div">
+                        <div class="wrapper">
+                            <p class="title" id="status-title">تم تسجيل دخولك بنجاح!</p>
+                            <table>
+                                <tr>
+                                    <td>السرعة</td>
+                                    <td id="speedStatus"></td>
+                                </tr>
+                                <tr>
+                                    <td>أسم المستخدم</td>
+                                    <td id="username"></td>
+                                </tr>
+                                <tr>
+                                    <td>التنزيل</td>
+                                    <td id="bytes_in"></td>
+                                </tr>
+                                <tr>
+                                    <td>الرفع</td>
+                                    <td id="bytes_out"></td>
+                                </tr>
+                                <tr remain_bytes_total>
+                                    <td>التحميل المتبقي</td>
+                                    <td id="remain_bytes_total"></td>
+                                </tr>
+                                <tr>
+                                    <td>الوقت المستهلك</td>
+                                    <td id="uptime"></td>
+                                </tr>
+                                <tr session_time_left>
+                                    <td>الوقت المتبقي</td>
+                                    <td id="session_time_left"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <button type="button" class="button app-submit extra-submit" data-esterahah>الاستراحة</button>
+                        <button type="button" class="button app-submit extra-submit" data-mobasher>البث المباشر</button>
+                    </div>
+
+                    <button class="button app-submit sell-point-icon app-store" parent-id="app-store" data-app-store-status-button>متجر البرامج</button>
+
+                    <div class="social-login">
+                        <button class="app-logout button app-submit back" erase-cookie clear-hot-cookie>تسجيل الخروج</button>
+                        <button class="app-logout button app-submit sell-point-icon cut-connection">قطع الاتصال</button>
+                        <h5 class="contact" data-service-number>للتواصل واتساب: <a href="https://wa.me/963{{service-number-first}}">اضغط هنا</a></h5>
+                    </div>
+                </div>
+
+                <div class="app" id="block">
+                    <div class="status-div">
+                        <div class="wrapper">
+                            <p class="title">انت محظور</p>
+                            <div style="padding: 25px">
+                                <p class="contact-text">لقد تم حظرك بسبب محاولات تسجيل الدخول الكثيرة الخاطئة</p>
+                                <div class="app-user"><span>بقي على فك الحظر: </span><span count-down-span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-login">
+                        <h5 class="contact back" data-service-number>هاتف: {{service-number}}</h5>
+                    </div>
+                </div>
+
+                <div class="app" id="app-store">
+                    <div class="sell-point-div">
+                        <div class="wrapper" id="grid"></div>
+                    </div>
+                    <div class="social-login">
+                        <button class="app-logout button app-submit back">الصفحة السابقة</button>
+                        <h5 class="contact back" data-service-number>هاتف: {{service-number}}</h5>
+                    </div>
+                </div>
+
+                <div class="app" id="loan">
+                    <div class="sell-point-div">
+                        <div class="wrapper">
+                            <p class="title">شرح الخدمات</p>
+                            <div id="loan-explain">
+                                <p class="contact-text">خدمة سلفني هي خدمة تتيح لك اخذ سلفة في حالة كنت في حاجة الى الانترنت وسدادها في وقت اخر</p>
+                                <p class="contact-text">خدمة سهر هي خدمة تعطيك رصيد اضافي 20% عند تعبئة كرت جديد مابين الساعة 1 والساعة 6 صباحا</p>
+                                <p class="contact-text">عرض الجمعة هي خدمة تعطيك رصيد اضافي 30% عند تعبئة كرت جديد طوال يوم الجمعة</p>
+                                <p class="contact-text">اجمع واربح هي خدمة تعطيك كرت مجاني تلقائيا عند اكمال استخدام 10 كروت من فئة محددة خلال مدة اقصاها 30 يوم</p>
+                            </div>
+                            <button type="button" class="button app-submit extra-submit" id="loan-button">
+                                <span class="button-text">اضغط للحصول على سلفة</span>
+                                <i class="button-icon fas icon-left-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="social-login">
+                        <button class="app-logout button app-submit back">الصفحة السابقة</button>
+                        <h5 class="contact back" data-service-number>هاتف: {{service-number}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="screen-background">
+                <span class="screen-background-shape screen-background-shape4"></span>
+                <span class="screen-background-shape screen-background-shape3"></span>
+                <span class="screen-background-shape screen-background-shape2"></span>
+                <span class="screen-background-shape screen-background-shape1"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var speedSelect = document.getElementById('speed');
+        var speedStatus = document.getElementById('speedStatus');
+
+        window.onload = function() {
+            var savedSpeed = localStorage.getItem('selectedSpeed');
+            if (savedSpeed) {
+                speedSelect.value = savedSpeed;
+                speedStatus.innerText = "السرعة الحالية: " + speedSelect.options[speedSelect.selectedIndex].text;
+            }
+        };
+
+        speedSelect.addEventListener('change', function() {
+            var selectedSpeed = speedSelect.options[speedSelect.selectedIndex].text;
+            speedStatus.innerText = "السرعة الحالية: " + selectedSpeed;
+            localStorage.setItem('selectedSpeed', speedSelect.value);
+        });
+    </script>
+
+    <script src="js/init.min.js"></script>
+    <script src="js/main.min.js"></script>
+    <script src="js/hotInImprover.min.js"></script>
+    <script src="js/hotCookie.min.js"></script>
+    <script src="js/hotOptions.min.js"></script>
+    <script src="js/hotBlocker.min.js"></script>
+    <script src="js/loan.min.js"></script>
+</body>
+</html>
