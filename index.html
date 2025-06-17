@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#8277d1">
     <title data-network-name>شبكة{{network-name}} </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="-1">
@@ -50,8 +53,8 @@
                         <button type="button" id="deleteVoucherButton" class="button small-button" style="margin-bottom: 15px; background-color: #e74c3c; width:100%; padding: 8px; font-size: 0.9em;">حذف الكرت المختار</button>
                         <!-- END OF ADDED BLOCK -->
 
-                        <label class="speed-select">إختر سرعتك من هنا:
-                            <select id="speed" name="speed" class="select">
+                        <label for="speed" class="form-label" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">إختر سرعتك من هنا:</label>
+                        <select id="speed" name="speed" class="login-input">
                                 <option value="55987b0d-ca6d-464f-93c8-db9ac4a08888">سرعة اقتصادية</option>
                                 <option value="55987b0d-ca6d-464f-93c8-db9ac4a08000" selected>سرعة متوسطة</option>
                                 <option value="55987b0d-ca6d-464f-93c8-db9ac4a08111">سرعة عالية</option>

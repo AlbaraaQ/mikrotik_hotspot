@@ -1,153 +1,608 @@
-/* Custom styles will be added here */
-body {
-    direction: rtl; /* Ensure right-to-left for Arabic */
-}
+/* css/custom.css - Global Redesign Styles */
 
-.container {
-    padding: 20px;
-}
-
-/* Styles for plans.html */
-.plan-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-.plan-card h3 {
-    margin-top: 0;
-}
-
-/* Styles for resellers.html */
-.reseller-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-/* Styles for change_speed.html */
-#currentSpeedSection, #newSpeedSelection {
-    margin-bottom: 20px;
-}
-
-/* Add more specific styles as needed */
-
-/* Ensure login-field containers with selects look consistent */
-.login-field select.login-input {
-    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
-    -moz-appearance: none;    /* Remove default styling in Firefox */
-    appearance: none;         /* Remove default styling */
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007AFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E"); /* Basic dropdown arrow */
-    background-repeat: no-repeat;
-    background-position: left 10px center; /* Adjust as needed */
-    background-size: 10px; /* Adjust as needed */
-    padding-left: 30px; /* Space for the arrow */
-}
-
-/* Style for the delete button if the generic 'button' class isn't sufficient */
-#deleteVoucherButton.small-button { /* More specific selector */
-    /* Styles from the prompt are inline, but can be moved here */
-    /* background-color: #e74c3c; */
-    /* width: 100%; */
-    /* padding: 8px; */
-    /* font-size: 0.9em; */
-    /* margin-bottom: 15px; */
-    color: white; /* Assuming dark background */
-    border-radius: 3px; /* Match other buttons if they have it */
-    border: none;
-}
-
-/* Additional Styles for resellers.html */
-.reseller-list-ul {
-    list-style-type: none; /* Removes default bullet points */
+/* --- Basic Reset/Defaults (Keep minimal if base CSS is okay) --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
 }
 
-.reseller-item { /* Refined styles, will override previous basic one if specificity is same or higher */
-    border: 1px solid #ddd;
-    padding: 15px; /* Increased padding */
-    margin-bottom: 15px; /* Increased margin */
-    border-radius: 5px;
-    background-color: #f9f9f9;
+/* --- Root Variables (Optional, but good for theming) --- */
+:root {
+    --font-family-base: 'Inter', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.6;
+
+    --color-primary: #2A4494;
+    --color-secondary: #5C9EAD;
+    --color-accent: #32C1C1;
+    --color-success: #28A745;
+    --color-error: #DC3545;
+    --color-warning: #FFC107;
+
+    --color-bg-light: #F8F9FA;
+    --color-text-light: #343A40;
+    --color-border-light: #CED4DA;
+    --card-shadow-light: 0 4px 12px rgba(0,0,0,0.08);
+    --input-bg-light: #FFFFFF;
+
+
+    --color-bg-dark: #1A1D24; /* Slightly different dark from original proposal for more depth */
+    --color-surface-dark: #2C303A; /* For cards/elevated surfaces in dark mode */
+    --color-text-dark: #E9ECEF;
+    --color-border-dark: #495057;
+    --card-shadow-dark: 0 4px 12px rgba(0,0,0,0.15); /* Darker shadow for dark mode */
+    --input-bg-dark: #2C303A;
 }
 
-.reseller-item h4 {
-    margin-top: 0;
-    color: #333; /* Darker heading color */
+/* --- Body & Global Typography --- */
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text-light);
+    background-color: var(--color-bg-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    direction: rtl; /* Ensure RTL is maintained */
 }
 
-.reseller-item p {
-    margin-bottom: 5px; /* Tighter spacing for p within item */
-    color: #555; /* Slightly lighter text color for details */
+h1, h2, h3, h4 {
+    font-family: var(--font-family-base); /* Ensure headings also use Inter */
+    color: var(--color-primary); /* Default heading color to primary */
+    margin-bottom: 0.75em;
+}
+h1 { font-size: 2.25rem; font-weight: 600; }
+h2 { font-size: 1.875rem; font-weight: 600; }
+h3 { font-size: 1.5rem; font-weight: 500; }
+h4 { font-size: 1.25rem; font-weight: 500; }
+
+p {
+    margin-bottom: 1em;
 }
 
-.reseller-item p i { /* Style for icons if used */
-    margin-right: 8px; /* Space after icon (or margin-left for RTL if icons are on the other side) */
-    color: #007bff; /* Example icon color */
-}
-
-.reseller-item a {
-    color: #007bff;
+a {
+    color: var(--color-primary);
     text-decoration: none;
+    transition: color 0.2s ease-in-out;
 }
-.reseller-item a:hover {
+a:hover {
+    color: var(--color-accent);
     text-decoration: underline;
 }
 
-/* Dark Mode Styles (assuming body.dark-mode or a similar selector) */
-body.dark-mode .plan-card,
-body.dark-mode .reseller-item {
-    background-color: #333; /* Darker background for cards */
-    border-color: #555;
+/* --- Layout & Background --- */
+/* Assuming .screen > .screen-content > .container > .login structure from previous steps */
+.screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* To push background to fill if content is short */
+}
+.screen-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center; /* Vertically center content like login form */
+    justify-content: center; /* Horizontally center */
+    padding: 20px; /* Padding for smaller screens */
 }
 
-body.dark-mode .plan-card h3,
-body.dark-mode .reseller-item h4,
-body.dark-mode .reseller-item p,
-body.dark-mode #currentSpeedSection p,
-body.dark-mode #newSpeedSelection p,
-body.dark-mode .login h1 { /* For titles on new pages if they use .login */
-    color: #f1f1f1; /* Light text */
+/* Replacing old .screen-background style */
+.screen-background {
+    display: none; /* Hide the old animated shapes entirely */
+}
+/* The body background color will serve as the main background.
+   If a more complex background is needed, it can be applied to .screen or body. */
+
+.container { /* This is inside screen-content */
+    width: 100%;
+    max-width: 480px; /* Max width for login panel, forms etc. */
+    margin: 0 auto;
 }
 
-body.dark-mode .reseller-item p i {
-    color: #00a0ff; /* Brighter icon color for dark mode */
+/* General Panel/Card Style (e.g., for .login class used as panel) */
+.panel, .login, .card { /* Using .panel as a generic class, .login for existing, .card for new cards */
+    background-color: var(--input-bg-light); /* White background for panel */
+    padding: 30px 35px;
+    border-radius: 12px; /* Softer, larger radius */
+    box-shadow: var(--card-shadow-light);
+    border: 1px solid var(--color-border-light);
+}
+.panel .title, .login .title, .card .title { /* For titles within panels */
+    text-align: center;
+    font-size: 1.75rem; /* 28px */
+    color: var(--color-primary);
+    margin-bottom: 25px;
+}
+.login h1 { /* For main headings on new pages if they use .login */
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.75rem;
 }
 
-body.dark-mode .reseller-item a {
-    color: #00a0ff;
+
+/* --- Buttons --- */
+.button, button { /* General button styling */
+    font-family: var(--font-family-base);
+    display: inline-block;
+    padding: 0.75em 1.5em;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none; /* For <a> styled as buttons */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
-/* Adjust select dropdowns for dark mode if needed */
-body.dark-mode #savedVouchersSelect,
-body.dark-mode #newSpeedSelect,
-body.dark-mode .login-field select.login-input { /* General class for selects in login fields */
-    background-color: #2c2c2c;
-    color: #f1f1f1;
-    border-color: #555;
+.button-primary, .login-submit, input[type="submit"] { /* Primary action buttons */
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+}
+.button-primary:hover, .login-submit:hover, input[type="submit"]:hover {
+    background-color: #223b80; /* Fallback for darken(--color-primary, 10%) */
+    border-color: #1e3370; /* Fallback for darken(--color-primary, 12%) */
+    color: #FFFFFF; /* Ensure text color stays white */
+}
+.button-primary:active, .login-submit:active, input[type="submit"]:active {
+    background-color: #1e3370;
+    border-color: #1a2b5e;
 }
 
-/* Override for the SVG arrow in dark mode for any select in a login-field */
-body.dark-mode .login-field select.login-input {
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23CCCCCC%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+
+.button-secondary, .app-logout.back { /* Secondary/utility buttons */
+    background-color: var(--color-secondary);
+    color: #FFFFFF;
+    border-color: var(--color-secondary);
+}
+.button-secondary:hover, .app-logout.back:hover {
+    background-color: #4a8d9b; /* Darken secondary */
+    border-color: #427f8c;
+    color: #FFFFFF;
 }
 
-body.dark-mode #deleteVoucherButton {
-    background-color: #c0392b; /* Slightly different red for dark bg */
+#deleteVoucherButton { /* Specific styling for delete button */
+    background-color: var(--color-error);
+    color: #FFFFFF;
+    border-color: var(--color-error);
+    width: 100%; /* Make it full width as per previous style */
+    margin-bottom: 15px;
+}
+#deleteVoucherButton:hover {
+    background-color: #c82333; /* Darken error */
+    border-color: #bd2130;
+    color: #FFFFFF;
+}
+
+/* --- Form Elements --- */
+.login-field {
+    margin-bottom: 1.25rem; /* More space between fields */
+    position: relative; /* For icon positioning */
+}
+
+.login-input, input[type="text"], input[type="password"], input[type="email"], input[type="tel"], select {
+    font-family: var(--font-family-base);
+    display: block;
+    width: 100%;
+    padding: 0.75em 1em;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-light);
+    background-color: var(--input-bg-light);
+    background-clip: padding-box;
+    border: 1px solid var(--color-border-light);
+    border-radius: 6px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.login-input:focus, input[type="text"]:focus, input[type="password"]:focus, select:focus {
+    border-color: var(--color-primary);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(42, 68, 148, 0.25); /* Fallback box-shadow */
+}
+/* For selects with icons, padding might need adjustment if icons are inside */
+.login-field select.login-input { /* From previous step, now with variables */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 35px; /* Original padding, adjust if icon is now outside */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23343A40%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: left 10px center; /* For RTL */
+    background-size: 10px;
+}
+
+.login-field .login-icon { /* Assuming icons are still used next to inputs */
+    position: absolute;
+    top: 50%;
+    right: 15px; /* For RTL */
+    transform: translateY(-50%);
+    color: var(--color-border-light); /* Subtle icon color */
+    font-size: 1.2em; /* Slightly larger icons */
+}
+.login-input:focus + .login-icon { /* Change icon color on focus */
+    color: var(--color-primary);
+}
+
+
+/* --- Tables (for status page, etc.) --- */
+table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse; /* Cleaner borders */
+}
+th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid var(--color-border-light);
+    text-align: right; /* RTL default */
+}
+th {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--color-border-light);
+}
+
+
+/* --- Error Messages --- */
+.error-container .error { /* Assuming existing error container */
+    background-color: var(--color-error);
     color: white;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+#error { /* The specific error message p tag */
+    color: white !important; /* Ensure it overrides any other color */
 }
 
-/* Ensure default button styles also adapt or are overridden */
-body.dark-mode .button.login-submit, body.dark-mode button.button {
-    /* If they don't inherit well from existing dark mode styles */
-    /* background-color: #007bff; */
-    /* color: white; */
+
+/* --- Dark Mode Specific Styles --- */
+body.dark-mode {
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-dark);
 }
 
-body.dark-mode .button.app-logout.back {
-    /* color: #f1f1f1; */ /* Ensure back buttons are visible */
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 {
+    color: var(--color-text-dark); /* Lighter headings for dark mode, primary might be too dark */
+}
+body.dark-mode a {
+    color: var(--color-accent); /* Brighter links in dark mode */
+}
+body.dark-mode a:hover {
+    color: var(--color-secondary);
+}
+
+body.dark-mode .panel, body.dark-mode .login, body.dark-mode .card {
+    background-color: var(--color-surface-dark);
+    box-shadow: var(--card-shadow-dark);
+    border-color: var(--color-border-dark);
+}
+body.dark-mode .panel .title, body.dark-mode .login .title, body.dark-mode .card .title,
+body.dark-mode .login h1 {
+    color: var(--color-text-dark);
+}
+
+
+body.dark-mode .login-input,
+body.dark-mode input[type="text"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="tel"],
+body.dark-mode select {
+    color: var(--color-text-dark);
+    background-color: var(--input-bg-dark);
+    border-color: var(--color-border-dark);
+}
+body.dark-mode .login-input:focus,
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="password"]:focus,
+body.dark-mode select:focus {
+    border-color: var(--color-accent); /* Use accent for focus in dark mode */
+    box-shadow: 0 0 0 0.2rem rgba(50, 193, 193, 0.35); /* Fallback box-shadow */
+}
+body.dark-mode .login-field select.login-input {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23CED4DA%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E"); /* Light arrow for dark bg */
+}
+body.dark-mode .login-field .login-icon {
+    color: var(--color-border-dark);
+}
+body.dark-mode .login-input:focus + .login-icon {
+    color: var(--color-accent);
+}
+
+
+body.dark-mode th, body.dark-mode td {
+    border-top-color: var(--color-border-dark);
+}
+body.dark-mode th {
+    color: var(--color-accent); /* Brighter table headers */
+}
+body.dark-mode thead th {
+    border-bottom-color: var(--color-border-dark);
+}
+
+/* Ensure button text colors are maintained or adjusted for dark mode if needed */
+body.dark-mode .button-primary, body.dark-mode .login-submit {
+    /* Primary button usually fine if background is dark and text is light */
+}
+body.dark-mode .button-secondary, body.dark-mode .app-logout.back {
+    /* Secondary button also usually fine */
+}
+body.dark-mode #deleteVoucherButton {
+    /* Error button fine */
+}
+
+/* Specific plan/reseller card styles will be handled in their respective redesign steps,
+   but they should inherit from .card or .panel if made generic enough. */
+.plan-card, .reseller-item { /* Ensure they pick up new base card styles */
+    /* These might need specific overrides later if .card/.panel isn't suitable */
+    background-color: var(--input-bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow-light);
+    border: 1px solid var(--color-border-light);
+    margin-bottom: 20px; /* Spacing between cards */
+}
+body.dark-mode .plan-card, body.dark-mode .reseller-item {
+    background-color: var(--color-surface-dark);
+    border-color: var(--color-border-dark);
+    box-shadow: var(--card-shadow-dark);
+}
+
+/* Example usage of --color-primary-rgb (you'd define this in :root if using the rgba version) */
+/* :root { --color-primary-rgb: 42, 68, 148; --color-accent-rgb: 50, 193, 193; } */
+/* For simplicity, the fallback box-shadows without CSS variables are used in this example. */
+
+/* --- Form Label --- */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-text-light); /* Or inherit from body */
+}
+body.dark-mode .form-label {
+    color: var(--color-text-dark);
+}
+
+/* --- Panel Subtitle --- */
+.panel-subtitle { /* For h2 titles within panels/app sections */
+    font-size: 1.5rem; /* e.g. 24px */
+    font-weight: 500;
+    color: var(--color-text-light); /* Less prominent than primary page titles */
+    text-align: center;
+    margin-bottom: 20px;
+}
+body.dark-mode .panel-subtitle {
+    color: var(--color-text-dark);
+}
+
+/* --- Button Warning (Example for 'Cut Connection') --- */
+.button-warning {
+    background-color: var(--color-warning);
+    color: #212529; /* Dark text on yellow for readability */
+    border-color: var(--color-warning);
+}
+.button-warning:hover {
+    background-color: #e0a800; /* Darken warning */
+    border-color: #d39e00;
+    color: #212529;
+}
+body.dark-mode .button-warning {
+    /* Warning color might need adjustment for dark mode if default is hard to see */
+    /* color: var(--color-text-dark); */ /* Ensure text is readable */
+}
+
+
+/* --- Specific adjustments for index.html elements if needed --- */
+/* Example: Ensure network name is prominent */
+.network-name span[data-network-name] {
+    font-size: 1.8em; /* Make it larger */
+    font-weight: 600;
+    color: var(--color-primary); /* Use primary color */
+    display: block; /* Ensure it takes space */
+    text-align: center; /* Center it */
+    margin-bottom: 10px;
+}
+body.dark-mode .network-name span[data-network-name] {
+    color: var(--color-accent); /* Brighter for dark mode */
+}
+
+.date-field {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+}
+body.dark-mode .date-field {
+    color: var(--color-text-dark);
+    opacity: 0.8;
+}
+
+.marquee[data-news-line] { /* Style the news line */
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-secondary); /* Light blue background */
+    color: white;
+    border-radius: 4px;
+    margin-bottom: 20px; /* Space below news */
+    font-size: 0.95em;
+}
+body.dark-mode .marquee[data-news-line] {
+    background-color: var(--color-surface-dark);
+    border: 1px solid var(--color-border-dark);
+    color: var(--color-accent);
+}
+
+/* Login form specific container adjustments if needed */
+.login-form {
+    margin-top: 20px; /* Add some space above the form elements if .login padding isn't enough */
+}
+
+/* Styling for social-login container and its buttons if it's still relevant */
+.social-login {
+    text-align: center; /* Center buttons if they are inline-block */
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border-light);
+}
+body.dark-mode .social-login {
+    border-top-color: var(--color-border-dark);
+}
+.social-login .button { /* Buttons within social-login */
+    margin: 5px;
+}
+.social-login .contact { /* Contact info */
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: var(--color-text-light);
+    opacity: 0.8;
+}
+body.dark-mode .social-login .contact {
+    color: var(--color-text-dark);
+}
+
+
+/* Status page table - already covered by global table styles, but can refine */
+#status table {
+    /* font-size: 0.95em; */ /* Slightly smaller text in status table */
+}
+#status table td:first-child { /* First column (labels) */
+    font-weight: 500;
+    /* color: var(--color-secondary); */ /* Optional: different color for labels */
+}
+body.dark-mode #status table td:first-child {
+    /* color: var(--color-text-dark); */
+    /* opacity: 0.9; */
+}
+
+
+/* Adjust icon colors if they are part of buttons that change background */
+.button .icon-user, .button .icon-lock, .button .icon-left-open, .button .icon-docs {
+    /* If icons are within buttons, their color should contrast with button bg */
+    /* Example: if button text is white, icon should be white */
+    /* This depends on how icons are structured in HTML (e.g. <i> or SVG) */
+    /* For Fontello <i> tags, color: inherit; might work if button text color is set. */
+}
+
+/* css/custom.css */
+/* ... (all global styles) ... */
+
+.plan-card-item {
+    text-align: right; /* RTL default alignment for content within card */
+}
+
+.plan-card-item h3 {
+    font-size: 1.35rem; /* Slightly smaller for card titles */
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.plan-card-item p {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: var(--color-text-light); /* Ensure text color is consistent */
+}
+body.dark-mode .plan-card-item p {
+    color: var(--color-text-dark);
+}
+
+.plan-card-item p:last-of-type { /* Remove margin from last paragraph before button */
+    margin-bottom: 0;
+}
+
+/* Specific styles for content within .reseller-list-item (which is also a .card) */
+.reseller-list-item { /* This class is on the <li> which is also a .card */
+    text-align: right; /* RTL default */
+    margin-bottom: 15px; /* Space between reseller items */
+}
+
+.reseller-list-item h4 {
+    font-size: 1.2rem; /* Adjust size as needed */
+    color: var(--color-primary);
+    margin-top: 0; /* Remove default h4 margin if card padding handles it */
+    margin-bottom: 12px;
+}
+
+.reseller-list-item p {
+    font-size: 1rem; /* Base size for p */
+    margin-bottom: 10px;
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+}
+.reseller-list-item p:last-child {
+    margin-bottom: 0; /* No margin for the last paragraph */
+}
+
+.reseller-list-item p i { /* Icon styling */
+    font-size: 1.2em; /* Icon size */
+    color: var(--color-secondary);
+    /* Assuming icon HTML is `<i>text`, and text is RTL. Icon is on the left visually. */
+    /* margin-left provides space *after* the icon, before the text. */
+    margin-left: 10px;
+}
+
+body.dark-mode .reseller-list-item h4 {
+    color: var(--color-text-dark);
+}
+body.dark-mode .reseller-list-item p {
+    color: var(--color-text-dark);
+}
+body.dark-mode .reseller-list-item p i {
+    color: var(--color-accent);
+}
+/* Links 'a' are already globally styled for dark mode and general cases */
+
+/* Styles for change_speed.html specifics */
+#currentSpeedSection p,
+#newSpeedSelection p { /* Paragraphs used as descriptive text */
+    font-size: 1.05rem; /* Slightly larger for emphasis */
+    margin-bottom: 0.5rem; /* Tighter margin if followed by label/select */
+    color: var(--color-text-light);
+}
+body.dark-mode #currentSpeedSection p,
+body.dark-mode #newSpeedSelection p {
+    color: var(--color-text-dark);
+}
+
+#currentSpeedSection #currentSpeedName {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+body.dark-mode #currentSpeedSection #currentSpeedName {
+    color: var(--color-accent);
+}
+
+/* Ensure the select for new speed has enough margin if label is separate */
+#newSpeedSelection .form-label {
+    margin-top: 10px; /* Add space above label if needed */
+}
+#newSpeedSelection select.login-input {
+    margin-bottom: 20px; /* Space below select before confirm button */
+}
+
+/* --- Button Focus Styles --- */
+.button:focus, button:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(42, 68, 148, 0.25); /* Primary color, lighter alpha */
+}
+
+.button-primary:focus, .login-submit:focus {
+    box-shadow: 0 0 0 0.2rem rgba(42, 68, 148, 0.5); /* Primary color, stronger alpha */
+}
+
+body.dark-mode .button:focus, body.dark-mode button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(50, 193, 193, 0.35); /* Accent color, lighter alpha for dark mode */
+}
+body.dark-mode .button-primary:focus, body.dark-mode .login-submit:focus {
+    box-shadow: 0 0 0 0.2rem rgba(50, 193, 193, 0.5); /* Accent color, stronger alpha for dark mode */
 }

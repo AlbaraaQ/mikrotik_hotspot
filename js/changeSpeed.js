@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentPlan) {
             currentPlanName = currentPlan.name;
         } else if (currentSpeedValue) {
-            // Fallback if speed_value is present but not in plans.json (e.g. custom speed)
             currentPlanName = `سرعة (${currentSpeedValue.substring(0,8)}...)`;
         }
 
@@ -54,19 +53,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (newSpeedSelectionElement && plans.length > 0) {
-            // Keep existing error message if fetchPlans failed
+             // Keep existing error message if fetchPlans failed
             if (!newSpeedSelectionElement.innerHTML.includes('خطأ')) {
-                newSpeedSelectionElement.innerHTML = '<p>اختر السرعة الجديدة:</p>';
+                newSpeedSelectionElement.innerHTML = ''; // Clear previous content
+
+                const descriptiveParagraph = document.createElement('p');
+                descriptiveParagraph.textContent = 'اختر السرعة الجديدة من القائمة:'; // More descriptive
+                newSpeedSelectionElement.appendChild(descriptiveParagraph);
+
                 const selectLabel = document.createElement('label');
-                selectLabel.setAttribute('for', 'newSpeedSelect');
-                selectLabel.textContent = 'الباقات المتاحة: ';
+                selectLabel.htmlFor = 'newSpeedSelect';
+                selectLabel.className = 'form-label'; // Use the new class
+                selectLabel.textContent = 'الباقات المتاحة:';
 
                 const select = document.createElement('select');
                 select.id = 'newSpeedSelect';
                 select.name = 'newSpeed';
+                select.className = 'login-input'; // Apply standard input styling class
 
                 plans.forEach(plan => {
-                    if (plan.speed_value !== currentSpeedValue) { // Don't list the current speed as an option
+                    if (plan.speed_value !== currentSpeedValue) {
                         const option = document.createElement('option');
                         option.value = plan.speed_value;
                         option.textContent = `${plan.name} (${plan.price}, ${plan.duration})`;
@@ -75,15 +81,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if (select.options.length === 0) {
-                     newSpeedSelectionElement.innerHTML = '<p>لا توجد باقات أخرى متاحة حاليًا.</p>';
+                     newSpeedSelectionElement.innerHTML = '<p>لا توجد باقات أخرى متاحة حاليًا لتغيير السرعة إليها.</p>'; // More specific message
                      if(confirmButton) confirmButton.disabled = true;
                 } else {
-                    newSpeedSelectionElement.appendChild(selectLabel);
-                    newSpeedSelectionElement.appendChild(select);
+                    newSpeedSelectionElement.appendChild(selectLabel); // Add label
+                    newSpeedSelectionElement.appendChild(select);    // Add select
                 }
             }
         } else if (plans.length === 0 && newSpeedSelectionElement && !newSpeedSelectionElement.innerHTML.includes('خطأ')) {
-             newSpeedSelectionElement.innerHTML = '<p>لا توجد باقات متاحة حاليًا.</p>';
+             newSpeedSelectionElement.innerHTML = '<p>لا توجد باقات متاحة حاليًا لتغيير السرعة إليها.</p>';
              if(confirmButton) confirmButton.disabled = true;
         }
     }

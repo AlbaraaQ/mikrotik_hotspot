@@ -9,26 +9,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchAndDisplayPlans() {
         try {
-            const response = await fetch('plans.json'); // Assuming plans.json is in the root
+            const response = await fetch('plans.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const plans = await response.json();
 
             if (plans && plans.length > 0) {
-                plansContainer.innerHTML = ''; // Clear any loading message
+                plansContainer.innerHTML = '';
                 plans.forEach(plan => {
                     const card = document.createElement('div');
-                    card.className = 'plan-card'; // Use class from custom.css
+                    // Use the generic 'card' class for styling, can add 'plan-card-item' for specific overrides
+                    card.className = 'card plan-card-item'; // Ensuring it gets .card styles, plus a specific class
 
-                    const nameElement = document.createElement('h3');
+                    const nameElement = document.createElement('h3'); // h3 for card titles
                     nameElement.textContent = plan.name;
                     card.appendChild(nameElement);
 
                     const speedElement = document.createElement('p');
-                    // The actual speed value (like '55987b0d-...') is not usually human-readable.
-                    // The plan 'name' should ideally represent the speed tier.
-                    speedElement.textContent = `السرعة: ${plan.name}`; // Or some other field like plan.speed_description
+                    speedElement.textContent = `السرعة: ${plan.name}`;
                     card.appendChild(speedElement);
 
                     const priceElement = document.createElement('p');
@@ -41,9 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     const chooseButton = document.createElement('button');
                     chooseButton.textContent = 'اختر هذه الباقة';
-                    chooseButton.className = 'button'; // Assuming a general button style exists
+                    // Apply primary button styling
+                    chooseButton.className = 'button button-primary';
+                    chooseButton.style.width = '100%'; // Make button full width within card
+                    chooseButton.style.marginTop = '15px'; // Add some space above button
+
                     chooseButton.addEventListener('click', function() {
-                        // Redirect to index.html (login page) with the speed_value as a parameter
                         window.location.href = `index.html?speed_value=${encodeURIComponent(plan.speed_value)}`;
                     });
                     card.appendChild(chooseButton);

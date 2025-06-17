@@ -9,33 +9,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchAndDisplayResellers() {
         try {
-            const response = await fetch('resellers.json'); // Assuming resellers.json is in the root
+            const response = await fetch('resellers.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const resellers = await response.json();
 
             if (resellers && resellers.length > 0) {
-                resellersListElement.innerHTML = ''; // Clear any loading message
+                resellersListElement.innerHTML = '';
 
                 const ul = document.createElement('ul');
-                ul.className = 'reseller-list-ul'; // Add a class for styling if needed
+                ul.className = 'reseller-list-ul';
+
 
                 resellers.forEach(reseller => {
                     const li = document.createElement('li');
-                    li.className = 'reseller-item'; // Use class from custom.css
+                    // Use the generic 'card' class for styling, plus a specific class
+                    li.className = 'card reseller-list-item';
 
-                    const nameElement = document.createElement('h4'); // Changed to h4 for better semantics than h3 if multiple items
+                    const nameElement = document.createElement('h4');
                     nameElement.textContent = reseller.name;
                     li.appendChild(nameElement);
 
                     const locationElement = document.createElement('p');
-                    locationElement.innerHTML = `<i class="icon-location"></i> الموقع: ${reseller.location}`; // Assuming icon-location exists in Fontello
+                    locationElement.innerHTML = `<i class="icon-location"></i> ${reseller.location}`; // Removed "الموقع:" for cleaner look, icon implies it
                     li.appendChild(locationElement);
 
                     const contactElement = document.createElement('p');
-                    // Make phone numbers clickable with tel: link
-                    contactElement.innerHTML = `<i class="icon-phone"></i> للتواصل: <a href="tel:${reseller.contact}">${reseller.contact}</a>`; // Assuming icon-phone exists
+                    contactElement.innerHTML = `<i class="icon-phone"></i> <a href="tel:${reseller.contact}">${reseller.contact}</a>`; // Removed "للتواصل:"
                     li.appendChild(contactElement);
 
                     ul.appendChild(li);
