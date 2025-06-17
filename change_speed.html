@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8277d1"> <!-- From index.html -->
+    <title>تغيير السرعة</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"> <!-- From index.html -->
+    <link rel="stylesheet" href="css/fontello.min.css"> <!-- Common icon font -->
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/mhtrf.css"> <!-- Common theme CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <div class="screen"> <!-- Added for structure -->
+        <div class="screen-content"> <!-- Added for structure -->
+            <div class="container"> <!-- Existing container -->
+                <div class="login" style="padding-top: 20px;"> <!-- Using 'login' class for similar panel styling, adjust padding -->
+                    <h1 style="text-align: center; margin-bottom:20px;">تغيير سرعة الاتصال</h1>
+                    <div id="currentSpeedSection">
+                        <p>السرعة الحالية: <span id="currentSpeedName"></span></p>
+                    </div>
+                    <div id="newSpeedSelection" style="margin-bottom: 20px;">
+                        <!-- Speed options will be populated by JavaScript -->
+                    </div>
+                    <button id="confirmSpeedChange" class="button login-submit" style="width:100%;">تأكيد تغيير السرعة</button>
+                    <p style="text-align: center; margin-top: 20px;"><a href="index.html" class="button app-logout back">العودة إلى تسجيل الدخول</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="screen-background"> <!-- From index.html for background shapes -->
+            <span class="screen-background-shape screen-background-shape4"></span>
+            <span class="screen-background-shape screen-background-shape3"></span>
+            <span class="screen-background-shape screen-background-shape2"></span>
+            <span class="screen-background-shape screen-background-shape1"></span>
+        </div>
+    </div>
+    <!-- Ensure js/changeSpeed.js is linked here -->
+    <script src="js/changeSpeed.js"></script>
+</body>
+</html>

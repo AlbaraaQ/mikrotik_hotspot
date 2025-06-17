@@ -1,0 +1,26 @@
+[
+  {
+    "name": "اقتصادي",
+    "speed_value": "55987b0d-ca6d-464f-93c8-db9ac4a08888",
+    "price": "10 SAR",
+    "duration": "30 يوم"
+  },
+  {
+    "name": "متوسط",
+    "speed_value": "55987b0d-ca6d-464f-93c8-db9ac4a08000",
+    "price": "20 SAR",
+    "duration": "30 يوم"
+  },
+  {
+    "name": "عالي",
+    "speed_value": "55987b0d-ca6d-464f-93c8-db9ac4a08111",
+    "price": "30 SAR",
+    "duration": "30 يوم"
+  },
+  {
+    "name": "قوي",
+    "speed_value": "55987b0d-ca6d-464f-93c8-db9ac4a08222",
+    "price": "40 SAR",
+    "duration": "30 يوم"
+  }
+]

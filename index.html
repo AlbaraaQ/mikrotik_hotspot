@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/mhtrf.css">
     <link rel="stylesheet" href="css/speed.css">
     <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/custom.css">
     <script charset="UTF-8" src="js/sweetalert2.all.min.js"></script>
 </head>
 <body translate="no">
@@ -38,6 +39,17 @@
                     </section>
 
                     <form class="login-form" name="login">
+                        <!-- Saved Vouchers Dropdown - ADD THIS BLOCK -->
+                        <div class="login-field" style="margin-bottom: 5px;"> <!-- Reduced margin for tighter packing -->
+                            <i class="login-icon icon-docs"></i> <!-- Using an existing Fontello icon class, assuming 'icon-docs' is suitable for saved items -->
+                            <select id="savedVouchersSelect" name="savedVouchers" class="login-input" style="padding-right: 35px; width: 100%;"> <!-- Ensure select styling matches inputs -->
+                                <option value="">اختر كرت محفوظ...</option>
+                                <!-- Options will be populated by JavaScript -->
+                            </select>
+                        </div>
+                        <button type="button" id="deleteVoucherButton" class="button small-button" style="margin-bottom: 15px; background-color: #e74c3c; width:100%; padding: 8px; font-size: 0.9em;">حذف الكرت المختار</button>
+                        <!-- END OF ADDED BLOCK -->
+
                         <label class="speed-select">إختر سرعتك من هنا:
                             <select id="speed" name="speed" class="select">
                                 <option value="55987b0d-ca6d-464f-93c8-db9ac4a08888">سرعة اقتصادية</option>
@@ -143,6 +155,9 @@
                                     <td id="session_time_left"></td>
                                 </tr>
                             </table>
+                            <!-- ADD THIS BUTTON -->
+                            <button type="button" id="navigateToChangeSpeed" class="button app-submit" style="margin-top: 15px; width:100%;">تغيير السرعة الحالية</button>
+                            <!-- END OF ADDED BUTTON -->
                         </div>
 
                         <button type="button" class="button app-submit extra-submit" data-esterahah>الاستراحة</button>
@@ -233,10 +248,11 @@
         });
     </script>
 
-    <script src="js/init.min.js"></script>
-    <script src="js/main.min.js"></script>
-    <script src="js/hotInImprover.min.js"></script>
-    <script src="js/hotCookie.min.js"></script>
+    <script src="js/voucherManager.js"></script> <!-- New -->
+    <script src="js/hotCookie.min.js"></script> <!-- Existing, modified -->
+    <script src="js/init.min.js"></script> <!-- Existing -->
+    <script src="js/main.min.js"></script> <!-- Existing, will be modified -->
+    <script src="js/hotInImprover.min.js"></script> <!-- Existing -->
     <script src="js/hotOptions.min.js"></script>
     <script src="js/hotBlocker.min.js"></script>
     <script src="js/loan.min.js"></script>

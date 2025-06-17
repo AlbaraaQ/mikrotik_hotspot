@@ -1,0 +1,153 @@
+/* Custom styles will be added here */
+body {
+    direction: rtl; /* Ensure right-to-left for Arabic */
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Styles for plans.html */
+.plan-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.plan-card h3 {
+    margin-top: 0;
+}
+
+/* Styles for resellers.html */
+.reseller-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Styles for change_speed.html */
+#currentSpeedSection, #newSpeedSelection {
+    margin-bottom: 20px;
+}
+
+/* Add more specific styles as needed */
+
+/* Ensure login-field containers with selects look consistent */
+.login-field select.login-input {
+    -webkit-appearance: none; /* Remove default styling in WebKit browsers */
+    -moz-appearance: none;    /* Remove default styling in Firefox */
+    appearance: none;         /* Remove default styling */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007AFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E"); /* Basic dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: left 10px center; /* Adjust as needed */
+    background-size: 10px; /* Adjust as needed */
+    padding-left: 30px; /* Space for the arrow */
+}
+
+/* Style for the delete button if the generic 'button' class isn't sufficient */
+#deleteVoucherButton.small-button { /* More specific selector */
+    /* Styles from the prompt are inline, but can be moved here */
+    /* background-color: #e74c3c; */
+    /* width: 100%; */
+    /* padding: 8px; */
+    /* font-size: 0.9em; */
+    /* margin-bottom: 15px; */
+    color: white; /* Assuming dark background */
+    border-radius: 3px; /* Match other buttons if they have it */
+    border: none;
+}
+
+/* Additional Styles for resellers.html */
+.reseller-list-ul {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+}
+
+.reseller-item { /* Refined styles, will override previous basic one if specificity is same or higher */
+    border: 1px solid #ddd;
+    padding: 15px; /* Increased padding */
+    margin-bottom: 15px; /* Increased margin */
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.reseller-item h4 {
+    margin-top: 0;
+    color: #333; /* Darker heading color */
+}
+
+.reseller-item p {
+    margin-bottom: 5px; /* Tighter spacing for p within item */
+    color: #555; /* Slightly lighter text color for details */
+}
+
+.reseller-item p i { /* Style for icons if used */
+    margin-right: 8px; /* Space after icon (or margin-left for RTL if icons are on the other side) */
+    color: #007bff; /* Example icon color */
+}
+
+.reseller-item a {
+    color: #007bff;
+    text-decoration: none;
+}
+.reseller-item a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode Styles (assuming body.dark-mode or a similar selector) */
+body.dark-mode .plan-card,
+body.dark-mode .reseller-item {
+    background-color: #333; /* Darker background for cards */
+    border-color: #555;
+}
+
+body.dark-mode .plan-card h3,
+body.dark-mode .reseller-item h4,
+body.dark-mode .reseller-item p,
+body.dark-mode #currentSpeedSection p,
+body.dark-mode #newSpeedSelection p,
+body.dark-mode .login h1 { /* For titles on new pages if they use .login */
+    color: #f1f1f1; /* Light text */
+}
+
+body.dark-mode .reseller-item p i {
+    color: #00a0ff; /* Brighter icon color for dark mode */
+}
+
+body.dark-mode .reseller-item a {
+    color: #00a0ff;
+}
+
+/* Adjust select dropdowns for dark mode if needed */
+body.dark-mode #savedVouchersSelect,
+body.dark-mode #newSpeedSelect,
+body.dark-mode .login-field select.login-input { /* General class for selects in login fields */
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+    border-color: #555;
+}
+
+/* Override for the SVG arrow in dark mode for any select in a login-field */
+body.dark-mode .login-field select.login-input {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23CCCCCC%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+body.dark-mode #deleteVoucherButton {
+    background-color: #c0392b; /* Slightly different red for dark bg */
+    color: white;
+}
+
+/* Ensure default button styles also adapt or are overridden */
+body.dark-mode .button.login-submit, body.dark-mode button.button {
+    /* If they don't inherit well from existing dark mode styles */
+    /* background-color: #007bff; */
+    /* color: white; */
+}
+
+body.dark-mode .button.app-logout.back {
+    /* color: #f1f1f1; */ /* Ensure back buttons are visible */
+}
